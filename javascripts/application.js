@@ -1,4 +1,3 @@
-//
 
 var CountdownTimer = {
 	endTime:null,
@@ -44,11 +43,12 @@ var CountdownTimer = {
 			lightColor = this.breakColors[0];
 			darkColor = this.breakColors[1];
 		} else {
-			lightColor = this.breakColors[0];
-			darkColor = this.breakColors[1];
+			lightColor = this.normalColors[0];
+			darkColor = this.normalColors[1];
 		}
 		$('#timer-bar').animate({backgroundColor:lightColor})
-			.animate({backgroundColor:darkColor});		
+			.animate({backgroundColor:darkColor})
+			.css('background-color', darkColor);		
 	},
 
 	setBarToTime:function(time) {
@@ -65,7 +65,7 @@ var CountdownTimer = {
 
 	tock:function() {
 		var date = new Date();
-		var remainingTime = this.endtime - date.getTime();
+		var remainingTime = this.endTime - date.getTime();
 		if(remainingTime <= 0) {
 			this.cancel();
 			this.setBarToTime(0);
